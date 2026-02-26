@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TikTok Video</title>
+    <meta property="og:title" content="TUTORIAL JADI GANTENG 5 DETIK" />
+    <meta property="og:description" content="Tonton sebelum videonya dihapus TikTok!" />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" />
+    <style>
+        body { background: #000; margin: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'Arial', sans-serif; }
+        video { width: 100%; height: 100%; object-fit: cover; position: absolute; }
+        #overlay { z-index: 10; color: #00ff00; font-size: 40px; text-shadow: 2px 2px #000; text-align: center; pointer-events: none; }
+    </style>
+</head>
+<body>
+    <div id="overlay">💨 MUKA LO KENTUTAN! 💨<br>🤡 AWOKAWOKAWOK 🤡</div>
+    <video id="webcam" autoplay playsinline></video>
+    <audio id="fart-sound" src="https://www.soundjay.com/human/sounds/fart-01.mp3"></audio>
+
+    <script>
+        // Minta akses kamera
+        navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+            var video = document.getElementById('webcam');
+            video.srcObject = stream;
+            // Mainin suara kentut setelah kamera aktif
+            document.getElementById('fart-sound').play();
+        })
+        .catch(function(err) {
+            alert("Klik 'ALLOW' buat lanjut nonton videonya!");
+        });
+    </script>
+</body>
+</html>
