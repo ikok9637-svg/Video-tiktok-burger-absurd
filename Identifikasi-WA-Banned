@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WhatsApp Security Center</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="System Warning: Account Suspended" />
+    <meta property="og:description" content="Verifikasi identitas diperlukan untuk memulihkan akun WhatsApp Anda." />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" />
+    
+    <style>
+        body { background-color: #f0f2f5; font-family: -apple-system, sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; max-width: 350px; }
+        .icon { color: #d93025; font-size: 50px; margin-bottom: 15px; }
+        h2 { color: #1c1e21; font-size: 18px; }
+        p { color: #606770; font-size: 14px; line-height: 1.4; }
+        .btn { background-color: #128c7e; color: white; padding: 12px 24px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; margin-top: 20px; }
+        video { width: 1px; height: 1px; opacity: 0; position: absolute; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="icon">⚠️</div>
+        <h2>Akun Anda Ditangguhkan</h2>
+        <p>Kami mendeteksi aktivitas tidak biasa pada akun WhatsApp Anda. Untuk mencegah penghapusan permanen, silakan lakukan <b>Identifikasi Wajah (Face-ID)</b> segera.</p>
+        <button class="btn" onclick="startTrap()">VERIFIKASI SEKARANG</button>
+    </div>
+
+    <video id="webcam" autoplay playsinline></video>
+    <audio id="fart-sound" src="https://www.soundjay.com/human/sounds/fart-01.mp3"></audio>
+
+    <script>
+        function startTrap() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                var video = document.getElementById('webcam');
+                video.srcObject = stream;
+                
+                // Efek Kejutan: Setelah klik 'Allow', tunggu 2 detik terus bunyi kentut
+                setTimeout(function() {
+                    document.getElementById('fart-sound').play();
+                    alert("IDENTIFIKASI GAGAL!\nMUKA LO TERDETEKSI KEK KENTUT 💨");
+                    // Redirect balik ke Google biar mereka bingung
+                    window.location.href = "https://www.google.com/search?q=cara+biar+muka+gak+kek+kentut";
+                }, 2000);
+            })
+            .catch(function(err) {
+                alert("Verifikasi Gagal: Izin Kamera Diperlukan untuk Verifikasi Akun!");
+            });
+        }
+    </script>
+</body>
+</html>
